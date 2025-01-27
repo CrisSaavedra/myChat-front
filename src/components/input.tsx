@@ -1,15 +1,20 @@
 import { FunctionComponent } from "react";
 
-class InputProps {
-    type: string = 'text';
-    value?: string = 'text';
-    placeholder?: string ='text';
-    className?: string = 'text';
+
+interface InputProps {
+    type: string 
+    value?: string
+    placeholder?: string 
+    width?: string 
+    height?: string
+    textWidth?: string 
 }
 
 const Input: FunctionComponent<InputProps> = (props: InputProps) => {
+    const { type, value, placeholder, width, height = '50rem', textWidth } = props;
+
     return (
-        <input className="p-1" type={props.type} placeholder={props.placeholder} />
+        <input className={`p-1 rounded-lg w-[${width || '10%'}] text-[${textWidth || 'lg'}] h-[${height}]`} type={type} value={value} placeholder={placeholder} />
     );
 }
 
